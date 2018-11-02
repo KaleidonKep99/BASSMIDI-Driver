@@ -1180,7 +1180,7 @@ STDAPI_(DWORD) modMessage(UINT uDeviceID, UINT uMsg, DWORD_PTR dwUser, DWORD_PTR
 
 		// Moving long events to a buffer is not safe,
 		// better play them as soon as they get received.
-		BASS_MIDI_StreamEvents(hStream[!!uDeviceID], BASS_MIDI_EVENTS_RAW, IIMidiHdr->lpData, sizeof(IIMidiHdr->lpData));	
+		BASS_MIDI_StreamEvents(hStream[!!uDeviceID], BASS_MIDI_EVENTS_RAW, IIMidiHdr->lpData, (int)IIMidiHdr->dwBufferLength);	
 			
 		// Mark the buffer as done
 		IIMidiHdr->dwFlags &= ~MHDR_INQUEUE;
